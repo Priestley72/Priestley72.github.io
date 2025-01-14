@@ -1,0 +1,1146 @@
+
+
+
+
+
+
+
+<!doctype html>
+<html
+  lang="zh-Hans"
+  dir="ltr"
+  class="scroll-smooth"
+  data-default-appearance="light"
+  data-auto-appearance="true"
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#FFFFFF" />
+  
+  <title>线性规划2 单纯形 &middot; Personal Blog</title>
+    <meta name="title" content="线性规划2 单纯形 &middot; Personal Blog" />
+  
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/appearance.min.d6cb63ee8fae71817a7d0cab6cd5e78aac382d5070fbf5f619a96b8571b399f8.js"
+    integrity="sha256-1stj7o&#43;ucYF6fQyrbNXniqw4LVBw&#43;/X2GalrhXGzmfg="
+  ></script>
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/main.bundle.min.2f895eb617457542d9ad7f28aae7d6e3964d9ec9b3f322930d849f624b4b3e12.css"
+    integrity="sha256-L4lethdFdULZrX8oqufW45ZNnsmz8yKTDYSfYktLPhI="
+  />
+  
+    
+    
+    
+  
+  
+    
+    
+    
+  
+  
+    
+    
+  
+  
+    
+    
+  
+  
+  
+    
+    <script
+      defer
+      type="text/javascript"
+      id="script-bundle"
+      src="/js/main.bundle.min.3470b877298b17fe2f99d9440375c380839f7374679b00883f4afabdffa1390b.js"
+      integrity="sha256-NHC4dymLF/4vmdlEA3XDgIOfc3RnmwCIP0r6vf&#43;hOQs="
+      data-copy="复制"
+      data-copied="已复制"
+    ></script>
+  
+  
+  <meta
+    name="description"
+    content="
+      万千课程知识 各路生活技能
+    "
+  />
+  
+  
+  
+  <link rel="canonical" href="//localhost:1313/knowledge/math/%E6%9C%80%E4%BC%98%E5%8C%96/%E5%BA%94%E7%94%A8%E8%BF%90%E7%AD%B9%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92-2---%E5%8D%95%E7%BA%AF%E5%BD%A2%E6%B3%95/" />
+  
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:url" content="//localhost:1313/knowledge/math/%E6%9C%80%E4%BC%98%E5%8C%96/%E5%BA%94%E7%94%A8%E8%BF%90%E7%AD%B9%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92-2---%E5%8D%95%E7%BA%AF%E5%BD%A2%E6%B3%95/">
+  <meta property="og:site_name" content="Personal Blog">
+  <meta property="og:title" content="线性规划2 单纯形">
+  <meta property="og:description" content="万千课程知识 各路生活技能">
+  <meta property="og:locale" content="zh_Hans">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="knowledge">
+    <meta property="article:published_time" content="2024-10-10T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-10-10T00:00:00+00:00">
+    <meta property="article:tag" content="Math">
+    <meta property="article:tag" content="最优化">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="线性规划2 单纯形">
+  <meta name="twitter:description" content="万千课程知识 各路生活技能">
+
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "articleSection": "知识",
+    "name": "线性规划2 单纯形",
+    "headline": "线性规划2 单纯形",
+    "description": "万千课程知识 各路生活技能",
+    "abstract": "万千课程知识 各路生活技能",
+    "inLanguage": "zh-Hans",
+    "url" : "\/\/localhost:1313\/knowledge\/math\/%E6%9C%80%E4%BC%98%E5%8C%96\/%E5%BA%94%E7%94%A8%E8%BF%90%E7%AD%B9%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92-2---%E5%8D%95%E7%BA%AF%E5%BD%A2%E6%B3%95\/",
+    "author" : {
+      "@type": "Person",
+      "name": "寒心贼"
+    },
+    "copyrightYear": "2024",
+    "dateCreated": "2024-10-10T00:00:00\u002b00:00",
+    "datePublished": "2024-10-10T00:00:00\u002b00:00",
+    
+    "dateModified": "2024-10-10T00:00:00\u002b00:00",
+    
+    "keywords": ["math","最优化"],
+    
+    "mainEntityOfPage": "true",
+    "wordCount": "1225"
+  }
+  </script>
+    
+    
+    
+    <script type="application/ld+json">
+    {
+   "@context": "https://schema.org",
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+     {
+       "@type": "ListItem",
+       "item": "//localhost:1313/",
+       "name": "首页",
+       "position": 1
+     },
+     {
+       "@type": "ListItem",
+       "item": "//localhost:1313/knowledge/",
+       "name": "知识",
+       "position": 2
+     },
+     {
+       "@type": "ListItem",
+       "item": "//localhost:1313/knowledge/math/",
+       "name": "人工智能数学基础",
+       "position": 3
+     },
+     {
+       "@type": "ListItem",
+       "item": "//localhost:1313/knowledge/math/%E6%9C%80%E4%BC%98%E5%8C%96/",
+       "name": "最优化算法",
+       "position": 4
+     },
+     {
+       "@type": "ListItem",
+       "name": "线性规划2 单纯形",
+       "position": 5
+     }
+   ]
+ }
+  </script>
+
+  
+  <meta name="author" content="寒心贼" />
+  
+    
+      <link href="mailto:h207835@outlook.com" rel="me" />
+    
+  
+  
+  
+
+
+
+
+
+
+  
+  
+
+  
+  
+  
+  <script>
+  MathJax = {
+    tex: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"],
+      ],
+      displayMath: [
+        ["$$", "$$"],
+        ["\\[", "\\]"],
+      ],
+      processEscapes: true,
+      processEnvironments: true,
+    },
+    options: {
+      skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"],
+    },
+  };
+
+  window.addEventListener("load", (event) => {
+    document.querySelectorAll("mjx-container").forEach(function (x) {
+      x.parentElement.classList += "has-jax";
+    });
+  });
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  type="text/javascript"
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>
+</head>
+<style>
+  code.has-jax {
+    -webkit-font-smoothing: antialiased;
+    background: inherit !important;
+    border: none !important;
+    font-size: 100%;
+  }
+</style><body
+    class="m-auto flex h-screen max-w-7xl flex-col bg-neutral px-6 text-lg leading-7 text-neutral-900 dark:bg-neutral-800 dark:text-neutral sm:px-14 md:px-24 lg:px-32"
+  >
+    <div id="the-top" class="absolute flex self-center">
+      <a
+        class="-translate-y-8 rounded-b-lg bg-primary-200 px-3 py-1 text-sm focus:translate-y-0 dark:bg-neutral-600"
+        href="#main-content"
+        ><span class="pe-2 font-bold text-primary-600 dark:text-primary-400">&darr;</span
+        >跳到主要内容</a
+      >
+    </div>
+    
+    
+      <header class="py-6 font-semibold text-neutral-900 dark:text-neutral sm:py-10 print:hidden">
+  <nav class="flex items-start justify-between sm:items-center">
+    
+    <div class="z-40 flex flex-row items-center">
+      
+  <a
+    class="decoration-primary-500"
+    rel="me"
+    href="/"
+    >Personal Blog</a
+  >
+
+    </div>
+    
+      
+      <label id="menu-button" for="menu-controller" class="block sm:hidden">
+        <input type="checkbox" id="menu-controller" class="hidden" />
+        <div class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400">
+          <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M0 96C0 78.33 14.33 64 32 64H416C433.7 64 448 78.33 448 96C448 113.7 433.7 128 416 128H32C14.33 128 0 113.7 0 96zM0 256C0 238.3 14.33 224 32 224H416C433.7 224 448 238.3 448 256C448 273.7 433.7 288 416 288H32C14.33 288 0 273.7 0 256zM416 448H32C14.33 448 0 433.7 0 416C0 398.3 14.33 384 32 384H416C433.7 384 448 398.3 448 416C448 433.7 433.7 448 416 448z"/></svg>
+</span>
+        </div>
+        <div
+          id="menu-wrapper"
+          class="invisible fixed inset-0 z-30 m-auto h-full w-full cursor-default overflow-auto bg-neutral-100/50 opacity-0 backdrop-blur-sm transition-opacity dark:bg-neutral-900/50"
+        >
+          <ul
+            class="mx-auto flex w-full max-w-7xl list-none flex-col overflow-visible px-6 py-6 text-end sm:px-14 sm:py-10 sm:pt-10 md:px-24 lg:px-32"
+          >
+            <li class="mb-1">
+              <span class="cursor-pointer hover:text-primary-600 dark:hover:text-primary-400"
+                ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span></span
+              >
+            </li>
+            
+              
+                
+                <li class="group mb-1">
+                  
+                    <a
+                      href="/knowledge/"
+                      title=""
+                      onclick="close_menu()"
+                      
+                      ><span
+                          class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                          >知识</span
+                        >
+                      </a
+                    >
+                  
+                </li>
+              
+                
+                <li class="group mb-1">
+                  
+                    <a
+                      href="/project/"
+                      title=""
+                      onclick="close_menu()"
+                      
+                      ><span
+                          class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                          >项目</span
+                        >
+                      </a
+                    >
+                  
+                </li>
+              
+                
+                <li class="group mb-1">
+                  
+                    <a
+                      href="/tags/"
+                      title=""
+                      onclick="close_menu()"
+                      
+                      ><span
+                          class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                          >标签</span
+                        >
+                      </a
+                    >
+                  
+                </li>
+              
+                
+                <li class="group mb-1">
+                  
+                    <a
+                      href="https://github.com/"
+                      title=""
+                      onclick="close_menu()"
+                      target="_blank"
+                      >
+                        <span
+                          class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                        ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></span></a
+                    >
+                  
+                </li>
+              
+                
+                <li class="group mb-1">
+                  
+                    
+                    
+                      <button
+                        id="search-button-1"
+                        title="搜索 (/)"
+                      >
+                        
+                          <span
+                            class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                          ><span class="icon relative inline-block px-1 align-text-bottom"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span></span><span
+                            class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                            ></span
+                          >
+                        
+                      </button>
+                    
+                  
+                </li>
+              
+                
+                <li class="group mb-1">
+                  
+                    
+                    <button
+                      id="appearance-switcher-1"
+                      type="button"
+                      aria-label="appearance switcher"
+                    >
+                      <span
+                        class="group-dark:hover:text-primary-400 inline transition-colors group-hover:text-primary-600 dark:hidden"
+                        title="切换为深色模式"
+                      >
+                        <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span><span
+                            class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                            ></span
+                          >
+                        
+                      </span>
+                      <span
+                        class="group-dark:hover:text-primary-400 hidden transition-colors group-hover:text-primary-600 dark:inline"
+                        title="切换为浅色模式"
+                      >
+                        <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span><span
+                            class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                            ></span
+                          >
+                        
+                      </span>
+                    </button>
+                  
+                </li>
+              
+                
+                  
+              
+            
+          </ul>
+        </div>
+      </label>
+      
+      <ul class="hidden list-none flex-row text-end sm:flex">
+        
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0">
+              
+                <a
+                  href="/knowledge/"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >知识</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0">
+              
+                <a
+                  href="/project/"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >项目</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0">
+              
+                <a
+                  href="/tags/"
+                  title=""
+                  
+                  ><span
+                      class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                      >标签</span
+                    >
+                  </a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0">
+              
+                <a
+                  href="https://github.com/"
+                  title=""
+                  target="_blank"
+                  >
+                    <span
+                      class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                    ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</span></span></a
+                >
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0">
+              
+                
+                
+                  <button
+                    id="search-button-2"
+                    title="搜索 (/)"
+                  >
+                    
+                      <span
+                        class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600"
+                      ><span class="icon relative inline-block px-1 align-text-bottom"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span></span><span
+                        class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                        ></span
+                      >
+                    
+                  </button>
+                
+              
+            </li>
+          
+            
+            <li class="group mb-1 sm:mb-0 sm:me-7 sm:last:me-0">
+              
+                
+                <button
+                  id="appearance-switcher-2"
+                  type="button"
+                  aria-label="appearance switcher"
+                >
+                  <span
+                    class="group-dark:hover:text-primary-400 inline transition-colors group-hover:text-primary-600 dark:hidden"
+                    title="切换为深色模式"
+                  >
+                    <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M32 256c0-123.8 100.3-224 223.8-224c11.36 0 29.7 1.668 40.9 3.746c9.616 1.777 11.75 14.63 3.279 19.44C245 86.5 211.2 144.6 211.2 207.8c0 109.7 99.71 193 208.3 172.3c9.561-1.805 16.28 9.324 10.11 16.95C387.9 448.6 324.8 480 255.8 480C132.1 480 32 379.6 32 256z"/></svg>
+</span><span
+                        class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                        ></span
+                      >
+                    
+                  </span>
+                  <span
+                    class="group-dark:hover:text-primary-400 hidden transition-colors group-hover:text-primary-600 dark:inline"
+                    title="切换为浅色模式"
+                  >
+                    <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 159.1c-53.02 0-95.1 42.98-95.1 95.1S202.1 351.1 256 351.1s95.1-42.98 95.1-95.1S309 159.1 256 159.1zM509.3 347L446.1 255.1l63.15-91.01c6.332-9.125 1.104-21.74-9.826-23.72l-109-19.7l-19.7-109c-1.975-10.93-14.59-16.16-23.72-9.824L256 65.89L164.1 2.736c-9.125-6.332-21.74-1.107-23.72 9.824L121.6 121.6L12.56 141.3C1.633 143.2-3.596 155.9 2.736 164.1L65.89 256l-63.15 91.01c-6.332 9.125-1.105 21.74 9.824 23.72l109 19.7l19.7 109c1.975 10.93 14.59 16.16 23.72 9.824L256 446.1l91.01 63.15c9.127 6.334 21.75 1.107 23.72-9.822l19.7-109l109-19.7C510.4 368.8 515.6 356.1 509.3 347zM256 383.1c-70.69 0-127.1-57.31-127.1-127.1c0-70.69 57.31-127.1 127.1-127.1s127.1 57.3 127.1 127.1C383.1 326.7 326.7 383.1 256 383.1z"/></svg>
+</span><span
+                        class="decoration-primary-500 group-hover:underline group-hover:decoration-2 group-hover:underline-offset-2"
+                        ></span
+                      >
+                    
+                  </span>
+                </button>
+              
+            </li>
+          
+            
+              
+          
+
+        
+      </ul>
+    
+  </nav>
+</header>
+
+    
+    <div class="relative flex grow flex-col">
+      <main id="main-content" class="grow">
+        
+  <article>
+    <header class="max-w-prose">
+      
+        <ol class="text-sm text-neutral-500 dark:text-neutral-400 print:hidden">
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  <li class="hidden inline">
+    <a
+      class="dark:underline-neutral-600 decoration-neutral-300 hover:underline"
+      href="/"
+      >首页</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class=" inline">
+    <a
+      class="dark:underline-neutral-600 decoration-neutral-300 hover:underline"
+      href="/knowledge/"
+      >知识</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class=" inline">
+    <a
+      class="dark:underline-neutral-600 decoration-neutral-300 hover:underline"
+      href="/knowledge/math/"
+      >人工智能数学基础</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class=" inline">
+    <a
+      class="dark:underline-neutral-600 decoration-neutral-300 hover:underline"
+      href="/knowledge/math/%E6%9C%80%E4%BC%98%E5%8C%96/"
+      >最优化算法</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+  
+  <li class="hidden inline">
+    <a
+      class="dark:underline-neutral-600 decoration-neutral-300 hover:underline"
+      href="/knowledge/math/%E6%9C%80%E4%BC%98%E5%8C%96/%E5%BA%94%E7%94%A8%E8%BF%90%E7%AD%B9%E5%AD%A6%E5%9F%BA%E7%A1%80%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92-2---%E5%8D%95%E7%BA%AF%E5%BD%A2%E6%B3%95/"
+      >线性规划2 单纯形</a
+    ><span class="px-1 text-primary-500">/</span>
+  </li>
+
+</ol>
+
+
+      
+      <h1 class="mt-0 text-4xl font-extrabold text-neutral-900 dark:text-neutral">
+        线性规划2 单纯形
+      </h1>
+      
+        <div class="mb-12 mt-8 text-base text-neutral-500 print:hidden dark:text-neutral-400">
+          
+
+
+
+
+
+  
+  
+
+
+
+  
+
+  
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  <div class="flex flex-row flex-wrap items-center">
+    
+    
+      <time datetime="2024-10-10 00:00:00 &#43;0000 UTC">10 十月 2024</time>
+    
+
+    
+    
+  </div>
+
+  
+  
+    <div class="my-1 flex flex-wrap text-xs leading-relaxed text-neutral-500 dark:text-neutral-400">
+      
+        
+          
+            <a
+              href="/tags/math/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >Math</a
+            >
+          
+            <a
+              href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96/"
+              class="mx-1 my-1 rounded-md border border-neutral-200 px-1 py-[1px] hover:border-primary-300 hover:text-primary-700 dark:border-neutral-600 dark:hover:border-primary-600 dark:hover:text-primary-400"
+              >最优化</a
+            >
+          
+        
+      
+    </div>
+  
+
+
+        </div>
+      
+      
+    </header>
+    <section class="prose mt-0 flex max-w-full flex-col dark:prose-invert lg:flex-row">
+      
+        <div class="order-first px-0 lg:order-last lg:max-w-xs lg:ps-8">
+          <div class="toc pe-5 print:hidden lg:sticky lg:top-10">
+            <details open class="-ms-5 mt-0 overflow-hidden rounded-lg ps-5">
+  <summary
+    class="block cursor-pointer bg-neutral-100 py-1 ps-5 text-lg font-semibold text-neutral-800 dark:bg-neutral-700 dark:text-neutral-100 lg:hidden"
+  >
+    目录
+  </summary>
+  <div class="border-s border-dotted border-neutral-300 py-2 ps-5 dark:border-neutral-600">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#基可行解和最优解的关系">基可行解和最优解的关系</a></li>
+    <li><a href="#单纯形法">单纯形法</a></li>
+    <li><a href="#单纯形表">单纯形表</a></li>
+    <li><a href="#退化">退化</a></li>
+    <li><a href="#单纯形法的证明">单纯形法的证明</a></li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+          </div>
+        </div>
+      
+      <div class="min-h-0 min-w-0 max-w-prose grow">
+        <blockquote>
+<p>这一节课讲解了求解线性规划问题的方法：单纯形法（simplex method）。</p>
+</blockquote>
+<h2 id="基可行解和最优解的关系" class="relative group">基可行解和最优解的关系 <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#%e5%9f%ba%e5%8f%af%e8%a1%8c%e8%a7%a3%e5%92%8c%e6%9c%80%e4%bc%98%e8%a7%a3%e7%9a%84%e5%85%b3%e7%b3%bb" aria-label="锚点">#</a></span></h2><blockquote>
+<p>接上一次课，首先是用反证法，证明一下最优解一定可以在基可行解处取到：</p>
+</blockquote>
+<blockquote>
+<p>假设没有基可行解是最优解，设最优解为 $\large x = \begin{bmatrix} x_1 & x_2 & \dots & x_k & 0 & 0 & \dots & 0 \end{bmatrix}^T$ 不是基可行解，由上一次课的一个引理，$\large x_1$ 到 $\large x_k$ 对应的 $\large A$ 中 $\large k$ 列 $\large p_1, p_2, \dots, p_k$ 是线性相关的。那么有不全为 0 的 $\large \lambda$，使得 $\large \sum_{i=1}^k \lambda_i p_i = 0$。</p>
+</blockquote>
+<blockquote>
+<p>记辅助向量 $\large v = \begin{bmatrix} \lambda_1 & \lambda_2 & \dots & \lambda_k & 0 & 0 & \dots & 0 \end{bmatrix}^T$，我们仍然构造 $\large x' = x + \epsilon v$ 和 $x'' = x - \epsilon v$（熟悉的套路&hellip;）。显然有 $\large x = \frac{x'+x''}{2}$，由于 $\large x$ 是最优解，当然 $\large x'$ 和 $\large x''$ 也是最优解。如果存在 $\large \lambda_i < 0$，那么我们取 $\large \epsilon = \min\limits_{\lambda_i < 0} -\frac{x_i}{\lambda_i}$，就能把 $\large x'$ 中 $\large x_1$ 到 $\large x_k$ 的某一个变成 0；如果不存在 $\large \lambda_i < 0$，那么我们取 $\large \epsilon = \min \frac{x_i}{\lambda_i}$，就能把 $\large x''$ 中 $\large x_1$ 到 $\large x_k$ 的某一个变成 0。也就是说，非 0 元素少了一个。这样一直构造下去，我们就能不断减少非 0 元素，直到 $x_1$ 到 $x_k$ 在 $A$ 中对应的 $k$ 列线性无关，$x$ 就变成了一个基可行解。而且在构造过程中，最优性没有改变，$x$ 还是最优解。</p>
+</blockquote>
+<h2 id="单纯形法" class="relative group">单纯形法 <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#%e5%8d%95%e7%ba%af%e5%bd%a2%e6%b3%95" aria-label="锚点">#</a></span></h2><p>接下来介绍用单纯形法（simplex method）求解线性规划问题的方式。单纯形法的每一步都在引入一个非基变量取代某一基变量，找出目标函数值更优的另一基本可行解，这样一步一步调整到最优解。</p>
+<p>来看一个例题：</p>
+$$\begin{matrix} & \max\limits_{x} \quad 3x_1 + 2x_2 \\ \text{s.t.} & 2x_1 + x_2 \le 12 \\ & x_1 + 2x_2 \le 9 \\ & x_1, x_2 \ge 0 \end{matrix}$$<p> 引入松弛变量，将原问题变为 </p>
+$$\begin{matrix} & \max\limits_{x} \quad z = 3x_1 + 2x_2 \\ \text{s.t.} & 2x_1 + x_2 + x_3 = 12 \\ & x_1 + 2x_2 + x_4 = 9 \\ & x_1, x_2, x_3, x_4 \ge 0 \end{matrix}$$<p> 首先，我们有一个可行解：$x = \begin{bmatrix} 0 & 0 & 12 & 9 \end{bmatrix}^T$，当前目标函数值为 $z = 0$。我们把各个变量用非基变量进行表示，有 </p>
+$$x_3 = 12 - 2x_1 - x_2 \\ x_4 = 9 - x_1 - 2x_2 \\ z = 3x_1 + 2x_2$$<p> 看起来 $x_1$ 对 $z$ 的贡献比 $x_2$ 来的大（$x_1$ 的系数比较大，这个系数称为“检验数”），我们考虑把 $x_1$ 变成基变量。要注意，$x_3 \ge 0$ 和 $x_4 \ge 0$ 的条件仍然需要成立。根据 $x_1$ 与 $x_3$ 和 $x_4$ 之间的表达式不难看出，当 $x_1 = 6$ 时，$x_3$ 最先变成 0，我们把它从基变量中去除。</p>
+<p>现在，可行解变为 $x = \begin{bmatrix}6 & 0 & 0 & 3\end{bmatrix}^T$，当前目标函数值为 $z = 18$。继续把各个变量用非基变量进行表示，有 </p>
+$$x_1 = 6 - x_2/2 - x_3/2 \\ x_4 = 3 - 3x_2/2 + x_3/2 \\ z = 18 + x_2/2 - 3x_3/2$$<p> 从系数可以看出，只有增加 $x_2$ 才能对目标函数值的增大有所贡献，考虑把 $x_2$ 变成基变量。从 $x_2$ 与 $x_1$ 和 $x_4$ 的关系式中也不难发现，当 $x_2 = 2$ 时，$x_4$ 最先变成 0，我们把它从基变量中去除。</p>
+<p>现在，可行解变为 $x = \begin{bmatrix} 5 & 2 & 0 & 0 \end{bmatrix}^T$，当前目标函数值为 $z = 19$。继续把各个变量用非基变量进行表示，有 </p>
+$$x_1 = 5 - 2x_3/3 + x_4/3 \\ x_2 = 2 + x_3/3 - 2x_4/3 \\ z = 19 - 4x_3/3 - x_4/3$$<p> 可以发现，$x_3$ 和 $x_4$ 与 $z$ 相关的系数都是负值，那么无论把哪个变量加入基变量，都只能让目标函数值变小了。所以此时我们就得到了线性规划问题的最优解：$x = \begin{bmatrix} 5 & 2 & 0 & 0 \end{bmatrix}^T$，目标函数值为 $z = 19$。</p>
+<p>当然，完全有可能出现某一个变量可以无限增大，求不出最优解的情况。考虑以下线性规划问题：</p>
+$$\begin{matrix} & \max\limits_{x} \quad 2x_1 + x_2 \\ \text{s.t.} & -3x_1 + x_2 \le 3 \\ & -4x_1 + x_2 \le 5 \\ & x_1, x_2 \ge 0 \end{matrix}$$<p> 加入松弛变量后有 </p>
+$$\begin{matrix} & \max\limits_{x} \quad 2x_1 + x_2 \\ \text{s.t.} & -3x_1 + x_2 + x_3 = 3 \\ & -4x_1 + x_2 + x_4 = 5 \\ & x_1, x_2, x_3, x_4 \ge 0 \end{matrix}$$<p> 有初始可行解 $x = \begin{bmatrix} 0 & 0 & 3 & 5 \end{bmatrix}^T$，仍然用非基变量表示其它变量，有 </p>
+$$x_3 = 3 + 3x_1 - x_2 \\ x_4 = 5 + 4x_1 - x_2 \\ z = 2x_1 + x_2$$<p> 从 $x_1$ 和 $x_3$ 与 $x_4$ 的关系式中可以看出，不管 $x_1$ 如何增大，两个基变量都不会小于 0，而且 $x_1$ 的检验数也是正数，那么这个优化问题没有最优解。</p>
+<p>归纳起来，单纯形法的基本步骤如下（来自 wiki）：</p>
+<ol>
+<li>把线性规划问题的约束方程组表达成典范型方程组，找出基本可行解作为初始基可行解。</li>
+<li>若基本可行解不存在，即约束条件有矛盾，则问题无解。</li>
+<li>若基本可行解存在，从初始基可行解作为起点，根据最优性条件和可行性条件，引入非基变量取代某一基变量，找出目标函数值更优的另一基本可行解。</li>
+<li>按步骤3进行迭代，直到对应检验数满足最优性条件（这时目标函数值不能再改善），即得到问题的最优解。</li>
+<li>若迭代过程中发现问题的目标函数值无界，则终止迭代。</li>
+</ol>
+<h2 id="单纯形表" class="relative group">单纯形表 <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#%e5%8d%95%e7%ba%af%e5%bd%a2%e8%a1%a8" aria-label="锚点">#</a></span></h2><p>可以用矩阵的形式，把各个变量用非基变量进行表示。</p>
+<p>设要优化的线性规划问题（标准形式）为
+</p>
+$$
+\begin{align}
+\max\limits_{x} \quad z &= c^Tx \\ 
+       \text{s.t.} \; Ax &\le b \\
+                                  x &\ge 0 
+\end{align}
+$$<p>
+我们可以把各个矩阵或向量根据基变量和非基变量分为两部分：令 $c^T = \begin{bmatrix} c_B^T & c_N^T \end{bmatrix}$，令 $A = \begin{bmatrix} A_B & A_N \end{bmatrix}$，令 $x = \begin{bmatrix} x_B^T & x_N^T \end{bmatrix}^T$，显然我们有
+</p>
+$$
+A_Bx_B + A_Nx_N = b \\ z = c_B^Tx_B + c_N^Tx_N
+$$<p>
+通过移项就能用 $x_N$ 表示其它变量：
+</p>
+$$
+x_B = A_B^{-1}b - A_B^{-1}A_Nx_N \\
+ z = c_B^TA_B^{-1}b + (c_N^T - c_B^TA_B^{-1}A_N)x_N
+$$<p>
+当然啦，由于基可行解中 $x_N = 0$，我们有
+</p>
+$$
+x_B = A_B^{-1}b \\ z = c_B^TA_B^{-1}b
+$$<p>
+单纯形表可以帮助我们利用矩阵形式，通过列表的方式求解线性规划问题，也利于编程实现。</p>
+<p>首先画一张这样的表：
+</p>
+$$
+\begin{array} {|c|cc|c|}
+\hline 
+f & c_B^T & c_N^T & 0 \\
+\hline 
+x_B & A_B & A_N & b \\
+\hline
+\end{array}
+$$<p>
+利用行变换将 $A_B$ 变为 $I$，根据线性代数的知识，这相当于左乘了一个 $A_B^{-1}$，那么表会变成这样：</p>
+$$\begin{array}{c|cc|c} & c_B^T & c_N^T & 0 \\ \hline x_B & I & A_B^{-1}A_N & A_B^{-1}b\end{array}$$<p> 然后再把下面一行乘上 $c_B^T$，用上面一行减一减，得到 </p>
+$$\begin{array}{c|cc|c} & 0 & c_N^T-c_B^TA_B^{-1}A_N & -c_B^TA_B^{-1}b \\ \hline x_B & I & A_B^{-1}A_N & A_B^{-1}b\end{array}$$<p> 这是一张非常神奇的表：第一行第二列（$x_B$ 那一列我们不看）就是检验数，第一行第三列就是 $-z$，而基变量和非基变量之间的系数也可以通过第二行的第二、三两列求出，计算起来非常方便。表格每这样计算一次，就是单纯形法里的一次迭代。</p>
+<p>虽然这个表格看起来有点麻烦（比如，看起来每次迭代好像都要重新写上 $A_B$ 和 $A_N$ 什么的，从头开始变化？），但实际操作起来是非常简便的，每次迭代的变化不会很多。看一个例子就知道了：</p>
+$$\begin{matrix} & \max\limits_{x} \quad 3x_1 + 2x_2 \\ \text{s.t.} & 2x_1 + x_2 \le 12 \\ & x_1 + 2x_2 \le 9 \\ & x_1, x_2 \ge 0 \end{matrix}$$<p> 这个例子和上一节的例子是一样的。仍然加入松弛变量变化为标准形式：</p>
+$$\begin{matrix} & \max\limits_{x} \quad z = 3x_1 + 2x_2 \\ \text{s.t.} & 2x_1 + x_2 + x_3 = 12 \\ & x_1 + 2x_2 + x_4 = 9 \\ & x_1, x_2, x_3, x_4 \ge 0 \end{matrix}$$<p> 初始的基可行解是 $x = \begin{bmatrix} 0 & 0 & 12 & 9\end{bmatrix}^T$，绘制初始的单纯形表：</p>
+$$\begin{array}{c|cccc|c} & 3 & 2 & 0 & 0 & 0 \\ \hline x_3 & 2 & 1 & 1 & 0 & 12 \\ x_4 & 1 & 2 & 0 & 1 & 9 \end{array}$$<p> 由于 $x_B = \begin{bmatrix} x_3 & x_4 \end{bmatrix} ^ T$，所以此时的 $A_B$ 由第二行和第三行的三、四两列组成，而且恰好是 $I$；$c_B^T$ 由第一行的第三、四两列组成，而且恰好是 0，我们直接来到了最后一步。</p>
+<p>根据单纯形法，我们选择检验数中较大的那个（3，对应 $x_1$）。由于 $12/2 = 6 < 9/1 = 9$，所以 $x_1$ 成为基变量，$x_3$ 被移出基变量。修改表格为 </p>
+$$\begin{array}{c|cccc|c} & 3 & 2 & 0 & 0 & 0 \\ \hline x_1 & 2 & 1 & 1 & 0 & 12 \\ x_4 & 1 & 2 & 0 & 1 & 9 \end{array}$$<p> 由于 $x_B = \begin{bmatrix} x_1 & x_4 \end{bmatrix} ^ T$，所以此时的 $A_B$ 由第二行和第三行的一、四两列组成（有人可能会问：为什么不用原问题里的矩阵 $A$ 呢？因为矩阵进行行变化之后，不改变方程的解，而且每次都用修改后的 $A$，只要更改一列就可以把 $A_B$ 变成 $I$，较为方便）。我们发现，只要把第一列改成单位向量即可，通过行变换，变化后的表格为 </p>
+$$\begin{array}{c|cccc|c} & 3 & 2 & 0 & 0 & 0 \\ \hline x_1 & 1 & 1/2 & 1/2 & 0 & 6 \\ x_4 & 0 & 3/2 & -1/2 & 1 & 3 \end{array}$$<p> 接下来我们把下面的几列乘以 $c_B^T$，注意此时 $c_B^T$ 是由第一行第一、四列组成的，所以我们要计算的是 </p>
+$$\begin{bmatrix}3 & 0\end{bmatrix}\begin{bmatrix} 1 & 1/2 & 1/2 & 0 & 6 \\ 0 & 3/2 & -1/2 & 1 & 3 \end{bmatrix}$$<p> 把第一行减去矩阵计算的结果，我们就有了第二次迭代后的单纯形表：</p>
+$$\begin{array}{c|cccc|c} & 0 & 1/2 & -3/2 & 0 & -18 \\ \hline x_1 & 1 & 1/2 & 1/2 & 0 & 6 \\ x_4 & 0 & 3/2 & -1/2 & 1 & 3 \end{array}$$<p> 依然选择最大的检验数（$1/2$，对应 $x_2$），由于 $3/(3/2) = 2 < 6/(1/2) = 12$，所以 $x_2$ 成为基变量，$x_4$ 被移出基变量。进行和上面类似的过程。</p>
+$$\begin{array}{c|cccc|c} & 3 & 2 & 0 & 0 & 0 \\ \hline x_1 & 1 & 1/2 & 1/2 & 0 & 6 \\ x_2 & 0 & 3/2 & -1/2 & 1 & 3 \end{array}$$<p> </p>
+$$\begin{array}{c|cccc|c} & 3 & 2 & 0 & 0 & 0 \\ \hline x_1 & 1 & 0 & 2/3 & -1/3 & 5 \\ x_2 & 0 & 1 & -1/3 & 2/3 & 2 \end{array}$$<p> 第三次迭代后的单纯形表为：</p>
+$$\begin{array}{c|cccc|c} & 0 & 0 & -4/3 & -1/3 & -19 \\ \hline x_1 & 1 & 0 & 2/3 & -1/3 & 5 \\ x_2 & 0 & 1 & -1/3 & 2/3 & 2 \end{array}$$<p> 此时所有检验数都为非正数，那么单纯形法结束。单纯形表右上角的 $-z$ 就是最优目标函数的相反数，所以最优目标函数为 19。表格最右一列的 $A_B^{-1}b$ 就是 $x_B$ 的取值，所以最优解为 $x_1 = 5$，$x_2 = 2$。</p>
+<h2 id="退化" class="relative group">退化 <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#%e9%80%80%e5%8c%96" aria-label="锚点">#</a></span></h2><p>退化是指一个基可行解中，存在至少一个基变量为 0 的情况。也就是说，这个基变量可以和另一个非基变量任意互换，而不影响结果（反正两个变量在这个解里取值都是 0）。</p>
+<p>退化会给单纯形法的求解带来一些麻烦：它可能会让单纯形法陷入循环，可能无法找到最优解。<a href="https://people.orie.cornell.edu/miketodd/or630/SimplexCyclingExample.pdf" target="_blank" rel="noreferrer">这个页面</a>里提供了一个让单纯形法无限循环的例子。</p>
+<p>不过，我们可以使用如下法则让单纯形法一定不会陷入循环（也就是一定能找到最优解）：在有多个可以入基的变量时，选择下标最小的一个；在有多个可以出基的变量时，也选择下标最小的一个。不过我不会证明&hellip;</p>
+<h2 id="单纯形法的证明" class="relative group">单纯形法的证明 <span class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100"><a class="group-hover:text-primary-300 dark:group-hover:text-neutral-700" style="text-decoration-line: none !important;" href="#%e5%8d%95%e7%ba%af%e5%bd%a2%e6%b3%95%e7%9a%84%e8%af%81%e6%98%8e" aria-label="锚点">#</a></span></h2><p>接下来证明单纯形法在非退化的情况下为什么可以取到最优解，以及为什么可以停止。</p>
+<p>首先证明：<strong>若检验数向量 $\hat{c} = c_N - c_B^TA_B^{-1}A_N$ 的每一维都小等于 0，那么此时基可行解 $x$ 是最优解</strong>。</p>
+<p>反证：假设有一个更优的 $y$ 才是最优解。令 $d = x - y$，我们有 </p>
+$$Ax - Ay = b - b = 0 \\ = Ad = A_Bd_B + A_Nd_N$$<p> 那么 </p>
+$$d_B = -A_B^{-1}A_Nd_N$$<p> 则 </p>
+$$c^Td = c_B^Td_B + c_N^Td_N \\ = (c_N^T-c_B^TA_B^{-1}A_N)d_N = \hat{c}d_N$$<p> 要注意，这里的 B（基变量）和 N（非基变量）都是对于 $x$ 而言的。</p>
+<p>显然根据基可行解的定义 $x_N = 0$，又 $y \ge 0$，所以 $d_N \ge 0$；又 $\hat{c} \le 0$，所以 $c^Td = \hat{c}d_N \le 0$，那么 $c^Ty = c^Tx + c^Td \le c^Tx$，说明 $y$ 并没有比 $x$ 更优，矛盾。这就说明了为什么在检验数均小等于 0 时停止算法，就能得到最优解。</p>
+<p>类似地，我们可以说明<strong>若基可行解 $x$ 是非退化的最优解，那么检验数向量的每一维都小等于 0</strong>。否则由于 $x$ 是非退化的最优解，如果有一个检验数大于 0，它对应的非基变量一定有增加的空间（而不会像退化的解一样，增加的空间为 0），那么就能构造一个更优的解。这就说明了，在非退化的情况下，肯定有解满足算法停止的情况。</p>
+<p>最后简单说明<strong>非退化情况下的单纯形法一定可以停止</strong>。因为非退化的单纯形法的每一次迭代都会让答案更优一点，所以它访问的基可行解都是不会重复的。而基可行解的数量是有限的（根据上一节课，至多 $C_n^m$ 个），其中又存在着让算法停止的最优解，所以算法一定可以停止。单纯形法的最差复杂度是指数级的（这个最差情况由 Klee 和 Minty 提出，是一个高维立方体，详见<a href="https://en.wikipedia.org/wiki/Klee%e2%80%93Minty_cube" target="_blank" rel="noreferrer">维基百科</a>），不过在大多数问题下，它的运行效率都还是比较快的。</p>
+
+      </div>
+    </section>
+    <footer class="max-w-prose pt-8 print:hidden">
+      
+
+  
+    <script src="/plugins/fancybox/fancybox.umd.js"></script>
+  
+  
+    <link rel="stylesheet" href="/plugins/fancybox/fancybox.css" />
+  
+  <script>
+    Fancybox.bind()
+  </script>
+
+      
+  <div class="flex">
+    
+    
+    
+      
+      
+        
+        
+
+
+
+
+
+
+
+
+  
+    <picture
+      class="!mb-0 !mt-0 me-4 w-24 h-auto rounded-full"
+      
+    >
+      
+      
+      
+      
+      <div data-fancybox href="/img/author.jpg">
+        <img
+          width="298"
+          height="282"
+          class="!mb-0 !mt-0 me-4 w-24 h-auto rounded-full"
+          alt="寒心贼"
+          loading="lazy" decoding="async"
+          
+            src="/img/author.jpg"
+          
+        />
+      </div>
+    </picture>
+  
+
+
+      
+    
+    <div class="place-self-center">
+      
+        <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+          作者
+        </div>
+        <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+          寒心贼
+        </div>
+      
+      
+        <div class="text-sm text-neutral-700 dark:text-neutral-400">不想成为厨师的数学家不是好AI</div>
+      
+      <div class="text-2xl sm:text-lg">
+  <div class="flex flex-wrap text-neutral-400 dark:text-neutral-500">
+    
+      
+        <a
+          class="px-1 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+          style="will-change:transform;"
+          href="mailto:h207835@outlook.com"
+          target="_blank"
+          aria-label="Email"
+          rel="me noopener noreferrer"
+          ><span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M207.8 20.73c-93.45 18.32-168.7 93.66-187 187.1c-27.64 140.9 68.65 266.2 199.1 285.1c19.01 2.888 36.17-12.26 36.17-31.49l.0001-.6631c0-15.74-11.44-28.88-26.84-31.24c-84.35-12.98-149.2-86.13-149.2-174.2c0-102.9 88.61-185.5 193.4-175.4c91.54 8.869 158.6 91.25 158.6 183.2l0 16.16c0 22.09-17.94 40.05-40 40.05s-40.01-17.96-40.01-40.05v-120.1c0-8.847-7.161-16.02-16.01-16.02l-31.98 .0036c-7.299 0-13.2 4.992-15.12 11.68c-24.85-12.15-54.24-16.38-86.06-5.106c-38.75 13.73-68.12 48.91-73.72 89.64c-9.483 69.01 43.81 128 110.9 128c26.44 0 50.43-9.544 69.59-24.88c24 31.3 65.23 48.69 109.4 37.49C465.2 369.3 496 324.1 495.1 277.2V256.3C495.1 107.1 361.2-9.332 207.8 20.73zM239.1 304.3c-26.47 0-48-21.56-48-48.05s21.53-48.05 48-48.05s48 21.56 48 48.05S266.5 304.3 239.1 304.3z"/></svg>
+</span></a
+        >
+      
+    
+  </div>
+
+</div>
+    </div>
+  </div>
+
+
+      
+
+      
+  
+    
+    
+    
+    <div class="pt-8">
+      <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+      <div class="flex justify-between pt-3">
+        <span>
+          
+            <a class="group flex" href="/knowledge/math/%E6%9C%80%E4%BC%98%E5%8C%96/%E9%83%A8%E5%88%86%E7%AE%97%E6%B3%95%E8%A7%A3%E9%87%8A/">
+              <span
+                class="me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+                ><span class="ltr:inline rtl:hidden">&larr;</span
+                ><span class="ltr:hidden rtl:inline">&rarr;</span></span
+              >
+              <span class="flex flex-col">
+                <span
+                  class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+                  >部分算法解释</span
+                >
+                <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+                  
+                    <time datetime="2024-10-03 00:00:00 &#43;0000 UTC">3 十月 2024</time>
+                  
+                </span>
+              </span>
+            </a>
+          
+        </span>
+        <span>
+          
+        </span>
+      </div>
+    </div>
+  
+
+
+      
+        
+          <div class="pt-3">
+            <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+            <div class="pt-3">
+              <div id="giscus-comment"></div>
+
+<script>
+  let giscusTheme = document.documentElement.classList.contains("dark") ? "dark" : "light";
+  let giscusAttributes = {
+    "src": "https://giscus.app/client.js",
+    "data-repo": "sylvanding/sylvanding.github.io",
+    "data-repo-id": "MDEwOlJlcG9zaXRvcnkzNTUzNjYxOTA=",
+    "data-category": "Announcements",
+    "data-category-id": "DIC_kwDOFS51Ls4CfrS1",
+    "data-mapping": "pathname",
+    "data-strict": "0",
+    "data-reactions-enabled": "1",
+    "data-emit-metadata": "0",
+    "data-input-position": "top",
+    "data-theme": giscusTheme,
+    "data-lang": "en",
+    "data-loading": "lazy",
+    "crossorigin": "anonymous",
+    "async": "",
+  };
+
+  let giscusScript = document.createElement("script");
+  Object.entries(giscusAttributes).forEach(([key, value]) => giscusScript.setAttribute(key, value));
+  document.getElementById("giscus-comment").appendChild(giscusScript);
+</script>
+            </div>
+          </div>
+        
+      
+    </footer>
+  </article>
+
+      </main>
+      
+        <div
+          class="pointer-events-none absolute bottom-0 end-0 top-[100vh] w-12"
+          id="to-top"
+          hidden="true"
+        >
+          <a
+            href="#the-top"
+            class="pointer-events-auto sticky top-[calc(100vh-5.5rem)] flex h-12 w-12 items-center justify-center rounded-full bg-neutral/50 text-xl text-neutral-700 backdrop-blur hover:text-primary-600 dark:bg-neutral-800/50 dark:text-neutral dark:hover:text-primary-400"
+            aria-label="回到顶部"
+            title="回到顶部"
+          >
+            &uarr;
+          </a>
+        </div>
+      <footer class="py-10 print:hidden">
+  
+  
+  <div class="flex items-center justify-between">
+    <div>
+      
+      
+        <p class="text-sm text-neutral-500 dark:text-neutral-400">
+            &copy;
+            2024
+            寒心贼
+        </p>
+      
+      
+      
+    </div>
+    <div class="flex flex-row items-center">
+      
+      
+      
+      
+    </div>
+  </div>
+  
+  
+    
+
+  <div class="flex items-center justify-between">
+    <div>
+      <p class="text-sm text-neutral-500 dark:text-neutral-400">🚀  <span id="runningdays"></span> </p>
+    </div>
+  </div>
+  
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i &lt; all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+
+
+
+
+  
+    <script src="/plugins/nprogress/nprogress.js"></script>
+  
+  
+    <link rel="stylesheet" href="/plugins/nprogress/nprogress.css" />
+  
+  <script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+      if (document.readyState === "interactive") NProgress.inc(0.8);
+      if (document.readyState === "complete") NProgress.done();
+    });
+  </script>
+
+
+  
+</footer>
+<div
+  id="search-wrapper"
+  class="invisible fixed inset-0 z-50 flex h-screen w-screen cursor-default flex-col bg-neutral-500/50 p-4 backdrop-blur-sm dark:bg-neutral-900/50 sm:p-6 md:p-[10vh] lg:p-[12vh]"
+  data-url="//localhost:1313/"
+>
+  <div
+    id="search-modal"
+    class="top-20 mx-auto flex min-h-0 w-full max-w-3xl flex-col rounded-md border border-neutral-200 bg-neutral shadow-lg dark:border-neutral-700 dark:bg-neutral-800"
+  >
+    <header class="relative z-10 flex flex-none items-center justify-between px-2">
+      <form class="flex min-w-0 flex-auto items-center">
+        <div class="flex h-8 w-8 items-center justify-center text-neutral-400">
+          <span class="icon relative inline-block px-1 align-text-bottom"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"/></svg>
+</span>
+        </div>
+        <input
+          type="search"
+          id="search-query"
+          class="mx-1 flex h-12 flex-auto appearance-none bg-transparent focus:outline-dotted focus:outline-2 focus:outline-transparent"
+          placeholder="搜索"
+          tabindex="0"
+        />
+      </form>
+      <button
+        id="close-search-button"
+        class="flex h-8 w-8 items-center justify-center text-neutral-700 hover:text-primary-600 dark:text-neutral dark:hover:text-primary-400"
+        title="关闭 (Esc)"
+      >
+        <span class="icon relative inline-block px-1 align-text-bottom"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg>
+</span>
+      </button>
+    </header>
+    <section class="flex-auto overflow-auto px-2">
+      <ul id="search-results">
+        
+      </ul>
+    </section>
+  </div>
+</div>
+
+    </div>
+  </body>
+</html>

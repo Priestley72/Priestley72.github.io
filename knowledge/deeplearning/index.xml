@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>深度学习相关知识 on Personal Blog</title>
+    <link>//localhost:1313/knowledge/deeplearning/</link>
+    <description>Recent content in 深度学习相关知识 on Personal Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="//localhost:1313/knowledge/deeplearning/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

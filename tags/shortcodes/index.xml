@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Shortcodes on Personal Blog</title>
+    <link>//localhost:1313/tags/shortcodes/</link>
+    <description>Recent content in Shortcodes on Personal Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Sun, 22 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/shortcodes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shortcodes示例</title>
+      <link>//localhost:1313/knowledge/congo-blog/shortcodes/</link>
+      <pubDate>Sun, 22 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/knowledge/congo-blog/shortcodes/</guid>
+      <description>使用Congo短代码为文章添加丰富内容，如图像、图表、按钮等</description>
+    </item>
+  </channel>
+</rss>

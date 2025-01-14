@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>构建个人Blog on Personal Blog</title>
+    <link>//localhost:1313/knowledge/congo-blog/</link>
+    <description>Recent content in 构建个人Blog on Personal Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Sun, 22 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/knowledge/congo-blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shortcodes示例</title>
+      <link>//localhost:1313/knowledge/congo-blog/shortcodes/</link>
+      <pubDate>Sun, 22 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/knowledge/congo-blog/shortcodes/</guid>
+      <description>使用Congo短代码为文章添加丰富内容，如图像、图表、按钮等</description>
+    </item>
+    <item>
+      <title>Markdown内容示例</title>
+      <link>//localhost:1313/knowledge/congo-blog/markdown%E6%A0%BC%E5%BC%8F%E7%A4%BA%E4%BE%8B/</link>
+      <pubDate>Thu, 20 Jul 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/knowledge/congo-blog/markdown%E6%A0%BC%E5%BC%8F%E7%A4%BA%E4%BE%8B/</guid>
+      <description>在Congo中使用Markdown和基本HTML元素编写文章</description>
+    </item>
+  </channel>
+</rss>

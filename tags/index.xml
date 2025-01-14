@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Personal Blog</title>
+    <link>//localhost:1313/tags/</link>
+    <description>Recent content in Tags on Personal Blog</description>
+    <generator>Hugo</generator>
+    <language>zh-Hans</language>
+    <lastBuildDate>Thu, 10 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Code</title>
+      <link>//localhost:1313/tags/code/</link>
+      <pubDate>Thu, 10 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/code/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Math</title>
+      <link>//localhost:1313/tags/math/</link>
+      <pubDate>Thu, 10 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/math/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>最优化</title>
+      <link>//localhost:1313/tags/%E6%9C%80%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Thu, 10 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/%E6%9C%80%E4%BC%98%E5%8C%96/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Blog</title>
+      <link>//localhost:1313/tags/blog/</link>
+      <pubDate>Sun, 22 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/blog/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Shortcodes</title>
+      <link>//localhost:1313/tags/shortcodes/</link>
+      <pubDate>Sun, 22 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/shortcodes/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Markdown</title>
+      <link>//localhost:1313/tags/markdown/</link>
+      <pubDate>Fri, 12 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/markdown/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Project</title>
+      <link>//localhost:1313/tags/project/</link>
+      <pubDate>Fri, 12 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/project/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
